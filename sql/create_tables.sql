@@ -7,7 +7,7 @@ CREATE TABLE Lisuke(
 CREATE TABLE Pizza(
     pizzanro SERIAL PRIMARY KEY,
     nimi varchar(50) NOT NULL,
-    hinta FLOAT(4,2) NOT NULL
+    hinta FLOAT(4, 2) NOT NULL
 );
 
 CREATE TABLE PizzaJaLisukkeet(

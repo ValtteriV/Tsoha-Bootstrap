@@ -2,8 +2,11 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
+* [Linkki sovellukseeni](vistiaho.users.cs.helsinki.fi/Tietokantasovellus)
 * [Linkki dokumentaatiooni](/doc/dokumentaatio.pdf)
+* [Linkki etusivuun](vistiaho.users.cs.helsinki.fi/Tietokantasovellus/etusivu)
+* [Linkki pizzan esittelysivuun](vistiaho.users.cs.helsinki.fi/Tietokantasovellus/pizza)
+* [Linkki pizzan lisäyssivuun](vistiaho.users.cs.helsinki.fi/Tietokantasovellus/pizzanlisays)
 
 ## Työn aihe
 

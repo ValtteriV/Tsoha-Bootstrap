@@ -11,4 +11,16 @@
       // Testaa koodiasi täällä
       View::make('helloworld.html');
     }
+    
+    public static function etusivu(){
+      View::make('suunnitelmat/etusivu.html');
+    }
+    
+    public static function pizza(){
+      View::make('suunnitelmat/pizza.html');
+    }
+    
+    public static function pizzanlisays(){
+      View::make('suunnitelmat/pizzanlisays.html');
+    }
   }

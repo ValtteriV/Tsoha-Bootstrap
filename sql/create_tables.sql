@@ -16,16 +16,16 @@ CREATE TABLE PizzaJaLisukkeet(
 );
 
 CREATE TABLE TarjousHinnat(
-    tarjouksenAlku DATE NOT NULL,
-    tarjouksenLoppu DATE NOT NULL,
-    tarjousProsentti INTEGER NOT NULL
+    tarjouksenalku DATE NOT NULL,
+    tarjouksenloppu DATE NOT NULL,
+    tarjousprosentti INTEGER NOT NULL
 );
 
 CREATE TABLE Kayttaja(
     kayttajaId SERIAL PRIMARY KEY,
     nimi varchar(50) NOT NULL,
     osoite varchar(50) NOT NULL,
-    puhelinNro varchar(50) NOT NULL
+    puhelinNro varchar(50) NOT NULL,
     kayttajaTunnus varchar(50) NOT NULL,
     salasana varchar(50) NOT NULL
 );
@@ -33,13 +33,13 @@ CREATE TABLE Kayttaja(
 CREATE TABLE Tilaus(
     tilausnro SERIAL PRIMARY KEY,
     tilausAika DATE NOT NULL,
-    tilaaja INTEGER REFERENCES Kayttaja(kayttajaId)
+    tilaaja INTEGER REFERENCES Kayttaja(kayttajaId),
     tilauksenTila INTEGER NOT NULL
 );
 
 CREATE TABLE TilauksenPizzat(
     tilausnro INTEGER REFERENCES Tilaus(tilausnro),
-    pizzanro INTEEGR REFERENCES Pizza(pizzanro)
+    pizzanro INTEGER REFERENCES Pizza(pizzanro)
 );
 
 

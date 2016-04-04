@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää uusi pizza</h1>
+<form>
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" class="form-control" value="Lihamestarin unelma">
+    </div>
+    <div class ="form-group">
+        <label>Täytteet</label>
+        <input type="text" class="form-control" value="salami">
+        <button class="btn btn-danger">Poista Täyte</button>
+        <input type="text" class="form-control" value="kebabliha">
+        <button class="btn btn-danger">Poista Täyte</button>
+        <input type="text" class="form-control" value="">
+        <button class="btn btn-success">Lisää Täyte</button>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+<!-- Kuvaus tulee tähän -->
+{% end content %}

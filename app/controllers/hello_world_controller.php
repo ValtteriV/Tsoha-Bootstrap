@@ -1,5 +1,6 @@
 <?php
-
+  require 'app/models/pizza.php';
+  require 'app/models/taytteet.php';
   class HelloWorldController extends BaseController{
 
     public static function index(){

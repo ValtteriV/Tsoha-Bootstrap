@@ -2,7 +2,8 @@
 
 
 
-    class Pizza extends BaseModel{
+    class Pizza extends BaseModel {
+        
         public $pizzanro, $nimi, $hinta;
         
         public function __construct($attributes) {
@@ -36,7 +37,9 @@
                     'nimi' => $row['nimi'],
                     'hinta' => $row['hinta']
                 ));
+                return $pizza;
             }
+            return null;
         }
         
         public function save() {

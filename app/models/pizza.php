@@ -49,5 +49,15 @@
             $this->pizzanro = $row['pizzanro'];
         }
         
+        public function destroy() {
+            $query = DB::connection()->prepare('DELETE FROM Pizza WHERE pizzanro = :id');
+            $query->execute(array('id' => $this->pizzanro));
+        }
+        
+        public function update() {
+            $query = DB::connection()->prepare('UPDATE Pizza SET nimi = :nimi, hinta = :hinta WHERE pizzanro = :id');
+            $query->execute(array('nimi' => $this->nimi, 'hinta' => $this-hinta, 'id' => $this->pizzanro));
+        }
+        
     }
 

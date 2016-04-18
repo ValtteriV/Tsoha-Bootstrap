@@ -15,7 +15,7 @@
     
     public static function etusivu(){
         $pizzat = Pizza::all();
-        View::make('suunnitelmat/etusivu.html', array('pizza' => $pizzat));
+        View::make('suunnitelmat/etusivu.html', array('pizzat' => $pizzat));
     }
     
     public static function pizza(){

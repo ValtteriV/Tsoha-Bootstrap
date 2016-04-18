@@ -1,6 +1,7 @@
 <?php
 
     require_once 'app/models/pizza.php';
+    require_once 'app/models/tayte.php';
     
     class Taytteet extends BaseModel {
         public $pizza, $taytteet;
@@ -18,7 +19,7 @@
             $tulokset = $query->fetchAll();
             $pizzantaytteet = array();
             foreach($tulokset as $tulos) {
-                $pizzantaytteet[] = $taytekysely[$tulos->lisukenro];
+                $pizzantaytteet[] = new Tayte(array('nimi' => $taytekysely[$tulos->lisukenro]));
             }
             $pizza = Pizza::find_by_pizzanro($pizzaid);
             $tamapizza = new Taytteet(array('pizza' => $pizza, 'taytteet' => $pizzantaytteet));

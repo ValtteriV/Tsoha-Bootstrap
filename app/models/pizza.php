@@ -17,7 +17,7 @@
             $pizzat = array();
             
             foreach($rows as $row) {
-                $pizzat = new Pizza(array(
+                $pizzat[] = new Pizza(array(
                     'pizzanro' => $row['pizzanro'],
                     'nimi' => $row['nimi'],
                     'hinta' => $row['hinta']

@@ -20,7 +20,7 @@
             foreach($tulokset as $tulos) {
                 $pizzantaytteet[] = $taytekysely[$tulos->lisukenro];
             }
-            $pizza = Pizza::find_by_pizzanro($id);
+            $pizza = Pizza::find_by_pizzanro($pizzaid);
             $tamapizza = new Taytteet(array('pizza' => $pizza, 'taytteet' => $pizzantaytteet));
             return $tamapizza;
         }

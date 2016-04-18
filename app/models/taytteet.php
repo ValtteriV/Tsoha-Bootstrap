@@ -1,5 +1,7 @@
 <?php
-    require 'app/models/pizza.php';
+
+    require_once 'app/models/pizza.php';
+    
     class Taytteet extends BaseModel {
         public $pizza, $taytteet;
         

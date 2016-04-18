@@ -12,8 +12,10 @@
     
     <tbody>
         {% for pizza in pizzat %}
-        <tr>{{pizza.nimi}}</tr>
-        <tr>{{pizza.hinta}}</tr>
+        <tr>
+            <td>{{pizza.nimi}}</td>
+            <td>{{pizza.hinta}}</td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>

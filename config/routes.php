@@ -12,8 +12,8 @@
       HelloWorldController::etusivu();
   });
   
-  $routes->get('/pizza', function() {
-      HelloWorldController::pizza();
+  $routes->get('/pizza/:id', function($id) {
+      HelloWorldController::tiettypizza($id);
   });
 
   $routes->get('/pizzanlisays', function() {

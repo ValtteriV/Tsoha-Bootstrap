@@ -17,7 +17,7 @@
             $taytelista = array();
             
             foreach($taytteet as $tayte) {
-                $taytelista[] = new Tayte(array('nimi' => $taytteet['nimi'], 'taytenro' => $taytteet['lisukenro']));
+                $taytelista[] = new Tayte(array('nimi' => $tayte['nimi'], 'taytenro' => $tayte['lisukenro']));
             }
             return $taytelista;
         }

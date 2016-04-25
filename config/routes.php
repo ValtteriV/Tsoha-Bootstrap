@@ -21,7 +21,7 @@
   });
   
   $routes->post('/pizza', function() {
-      HelloWorldController::pizzanlisays();
+      HelloWorldController::store();
   });
 
   $routes->get('/pizzanlisays', function() {

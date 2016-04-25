@@ -33,6 +33,7 @@
       View::make('suunnitelmat/pizzanlisays.html', array('taytteet' => $taytelista));
     }
     
+    
     public static function store(){
         $params = $_POST;
         $pizza = new Pizza(array(
@@ -45,7 +46,7 @@
             Pizza::taytesave($pizza->pizzanro, $tayte);
         }
         
-        Redirect::to('/pizza/' . $pizza->pizzanro . '/lisaatayte', array('message' => 'Pizza on lisätty onnistuneesti'));
+        Redirect::to('/pizza/' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti'));
     }
     
     public static function taytteenlisays($id){

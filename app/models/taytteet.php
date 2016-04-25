@@ -10,8 +10,19 @@
             parent::__construct($attributes);
         }
         
+        public static function all() {
+            $taytekysely = DB::connection()->prepare('SELECT * FROM LISUKE');
+            $taytekysely->execute();
+            $taytteet = $taytekysely->fetchAll();
+            $taytelista = array();
+            
+            foreach($taytteet as $tayte) {
+                $taytelista[] = new Tayte(array('nimi' => $taytteet['nimi'], 'taytenro' => $taytteet['taytenro']));
+            }
+        }
+        
         public static function getpizzataytteet($pizzaid) {
-            $taytekysely = DB:: connection()->prepare('SELECT * From Lisuke');
+            $taytekysely = DB::connection()->prepare('SELECT * FROM Lisuke');
             $taytekysely->execute();
             $taytteet = $taytekysely->fetchAll();
             $query = DB::connection()->prepare('SELECT * FROM PizzaJaLisukkeet WHERE pizzanro = :pizzaid');
@@ -19,9 +30,10 @@
             $tulokset = $query->fetchAll();
             $pizzantaytteet = array();
             foreach($tulokset as $tulos) {
-                $pizzantaytteet[] = new Tayte(array('nimi' => $taytekysely[$tulos->lisukenro]));
+                $pizzantaytteet[] = new Tayte(array('nimi' => $taytteet[$tulos->lisukenro]));
             }
-            $pizza = Pizza::find_by_pizzanro($pizzaid);
+            $haepizza = Pizza::find_by_pizzanro($pizzaid);
+            $pizza = new Pizza(array('pizzanro' => $haepizza['pizzanro'], 'hinta' => $haepizza['hinta'], 'nimi' => $haepizza['nimi']));
             $tamapizza = new Taytteet(array('pizza' => $pizza, 'taytteet' => $pizzantaytteet));
             return $tamapizza;
         }

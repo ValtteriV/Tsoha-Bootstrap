@@ -1,7 +1,7 @@
 <?php
 
     class Tayte extends BaseModel {
-        public $nimi;
+        public $nimi, $taytenro;
         
         public function __construct($attributes) {
             parent::__construct($attributes);

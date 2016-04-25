@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Lisää uusi pizza</h1>
-<form>
+<form method="post" action="{{base_path}}/pizza">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" class="form-control" value="Lihamestarin unelma">
-    </div>
-    <div class ="form-group">
-        <label>Täytteet</label>
-        <input type="text" class="form-control" value="salami">
-        <button class="btn btn-danger">Poista Täyte</button>
-        <input type="text" class="form-control" value="kebabliha">
-        <button class="btn btn-danger">Poista Täyte</button>
         <input type="text" class="form-control" value="">
-        <button class="btn btn-success">Lisää Täyte</button>
+    </div>
+    <select>
+        <optgroup label="Täytteet">
+            {% for tayte in taytelista %}
+            <option value=tayte.taytenro>tayte.nimi</option>
+            {% endfor %}
+        </optgroup>
+    </select>
+    
+    <div class="form-group">
+        <label>Hinta</label>
+        <input type="number" class="form-control" value="">
     </div>
 
     <div class="form-group">

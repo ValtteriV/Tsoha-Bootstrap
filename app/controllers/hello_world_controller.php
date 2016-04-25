@@ -28,7 +28,8 @@
     }
     
     public static function pizzanlisays(){
-      View::make('suunnitelmat/pizzanlisays.html');
+        $taytelista = Taytteet::all();
+      View::make('suunnitelmat/pizzanlisays.html', array('taytteet' => $taytelista));
     }
     
     public static function store(){

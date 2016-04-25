@@ -31,7 +31,7 @@
             foreach($tulokset as $tulos) {
                 foreach($taytteet as $tayte) {
                     if ($tayte->taytenro == $tulos['lisukenro']) {
-                        $pizzantaytteet[] = $tayte;
+                        $pizzantaytteet[] = new Tayte(array('nimi' => $tayte->nimi, 'taytenro' => $tayte->taytenro));
                         break;
                     }
                 }

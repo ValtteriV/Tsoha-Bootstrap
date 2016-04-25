@@ -13,7 +13,7 @@
     <tbody>
         {% for pizza in pizzat %}
         <tr>
-            <td href="{{base_path}}/pizza/{{pizza.pizzanro}}">{{pizza.nimi}}</td>
+            <td><a href="{{base_path}}/pizza/{{pizza.pizzanro}}">{{pizza.nimi}}</td>
             <td>{{pizza.hinta}}</td>
         </tr>
         {% endfor %}

@@ -29,7 +29,7 @@
             $tulokset = $query->fetchAll();
             $pizzantaytteet = array();
             foreach($tulokset as $tulos) {
-                $pizzantaytteet[] = new Tayte(array('nimi' => $tulos['Lisuke.nimi'], 'taytenro' => $tulos['Lisuke.lisukenro']));
+                $pizzantaytteet[] = new Tayte(array('nimi' => $tulos['nimi'], 'taytenro' => $tulos['lisukenro']));
             }
             return $pizzantaytteet;
         }

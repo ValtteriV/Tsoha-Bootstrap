@@ -20,6 +20,10 @@
       HelloWorldController::taytestore($id);
   });
   
+  $routes->post('/pizza/:id/destroy', function($id) {
+      HelloWorldController::destroy($id);
+  });
+  
   $routes->post('/pizza', function() {
       HelloWorldController::store();
   });

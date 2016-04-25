@@ -46,7 +46,7 @@
             Pizza::taytesave($pizza->pizzanro, $tayte);
         }
         
-        Redirect::to('/pizza/' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti'));
+        Redirect::to('/pizza/' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti.'));
     }
     
     public static function taytteenlisays($id){
@@ -55,9 +55,10 @@
         View::make('suunnitelmat/taytteenlisays.html', array('pizza' => $pizza, 'taytteet' => $taytteet));
     }
     
-    public static function taytestore($id){
-        $params = $_POST;
-        
+    public static function destroy($id) {
+        $pizza = new Pizza(array('pizzanro' => $id));
+        $pizza->destroy();
+        Redirect::to('/etusivu', array('message' => 'Pizza on poistettu onnistuneesti.'));
     }
     
   }

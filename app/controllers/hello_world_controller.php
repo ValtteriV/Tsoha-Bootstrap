@@ -41,6 +41,9 @@
         ));
         
         $pizza->save();
+        foreach($params['taytteet'] as $tayte) {
+            Pizza::taytesave($pizza->pizzanro, $tayte);
+        }
         
         Redirect::to('/pizza/' . $pizza->pizzanro . '/lisaatayte', array('message' => 'Pizza on lisätty onnistuneesti'));
     }

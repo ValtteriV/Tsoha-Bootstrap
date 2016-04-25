@@ -36,9 +36,7 @@
                     }
                 }
             }
-            $pizza = Pizza::find_by_pizzanro($pizzaid);
-            $tamapizza = new Taytteet(array('pizza' => $pizza, 'taytteet' => $pizzantaytteet));
-            return $tamapizza;
+            return $pizzantaytteet;
         }
     }
 

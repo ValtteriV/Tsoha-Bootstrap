@@ -23,8 +23,9 @@
     }
     
     public static function tiettypizza($id){
-        $pizza = Taytteet::getpizzataytteet($id);
-        View::make('suunnitelmat/pizzamallilla.html', array('pizza' => $pizza->pizza, 'taytteet' => $pizza->taytteet));
+        $pizzantaytteet = Taytteet::getpizzataytteet($id);
+        $pizza = Pizza::find_by_pizzanro($id);
+        View::make('suunnitelmat/pizzamallilla.html', array('pizza' => $pizza, 'taytteet' => $pizzantaytteet));
     }
     
     public static function pizzanlisays(){

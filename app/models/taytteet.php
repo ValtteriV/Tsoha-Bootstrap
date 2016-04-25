@@ -11,13 +11,13 @@
         }
         
         public static function all() {
-            $taytekysely = DB::connection()->prepare('SELECT * FROM LISUKE');
+            $taytekysely = DB::connection()->prepare('SELECT * FROM Lisuke');
             $taytekysely->execute();
             $taytteet = $taytekysely->fetchAll();
             $taytelista = array();
             
             foreach($taytteet as $tayte) {
-                $taytelista[] = new Tayte(array('nimi' => $taytteet['nimi'], 'taytenro' => $taytteet['taytenro']));
+                $taytelista[] = new Tayte(array('nimi' => $taytteet['nimi'], 'taytenro' => $taytteet['lisukenro']));
             }
             return $taytelista;
         }

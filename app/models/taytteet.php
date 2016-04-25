@@ -19,21 +19,24 @@
             foreach($taytteet as $tayte) {
                 $taytelista[] = new Tayte(array('nimi' => $taytteet['nimi'], 'taytenro' => $taytteet['taytenro']));
             }
+            return $taytelista;
         }
         
         public static function getpizzataytteet($pizzaid) {
-            $taytekysely = DB::connection()->prepare('SELECT * FROM Lisuke');
-            $taytekysely->execute();
-            $taytteet = $taytekysely->fetchAll();
+            $taytteet = all();
             $query = DB::connection()->prepare('SELECT * FROM PizzaJaLisukkeet WHERE pizzanro = :pizzaid');
             $query->execute(array('pizzaid' => $pizzaid));
             $tulokset = $query->fetchAll();
             $pizzantaytteet = array();
             foreach($tulokset as $tulos) {
-                $pizzantaytteet[] = new Tayte(array('nimi' => $taytteet[$tulos->lisukenro]));
+                foreach($taytteet as $tayte) {
+                    if ($tayte->taytenro == $tulos['lisukenro']) {
+                        $pizzantaytteet[] = $tayte;
+                        break;
+                    }
+                }
             }
-            $haepizza = Pizza::find_by_pizzanro($pizzaid);
-            $pizza = new Pizza(array('pizzanro' => $haepizza['pizzanro'], 'hinta' => $haepizza['hinta'], 'nimi' => $haepizza['nimi']));
+            $pizza = Pizza::find_by_pizzanro($pizzaid);
             $tamapizza = new Taytteet(array('pizza' => $pizza, 'taytteet' => $pizzantaytteet));
             return $tamapizza;
         }

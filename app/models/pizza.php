@@ -50,6 +50,8 @@
         }
         
         public function destroy() {
+            $query = DB::connection()->prepare('DELETE FROM PizzaJaLisukkeet WHERE pizzanro = :id');
+            $query->execute(array('id' => $this->pizzanro));
             $query = DB::connection()->prepare('DELETE FROM Pizza WHERE pizzanro = :id');
             $query->execute(array('id' => $this->pizzanro));
         }

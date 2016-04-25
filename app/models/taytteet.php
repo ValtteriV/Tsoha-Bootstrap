@@ -24,17 +24,12 @@
         
         public static function getpizzataytteet($pizzaid) {
             $taytteet = Taytteet::all();
-            $query = DB::connection()->prepare('SELECT * FROM PizzaJaLisukkeet WHERE pizzanro = :pizzaid');
+            $query = DB::connection()->prepare('SELECT Lisuke.* FROM PizzaJaLisukkeet, Lisuke WHERE PizzaJaLisukkeet.pizzanro = :pizzaid AND Lisuke.lisukenro = PizzaJaLisukkeet.lisukenro');
             $query->execute(array('pizzaid' => $pizzaid));
             $tulokset = $query->fetchAll();
             $pizzantaytteet = array();
             foreach($tulokset as $tulos) {
-                foreach($taytteet as $tayte) {
-                    if ($tayte->taytenro == $tulos['lisukenro']) {
-                        $pizzantaytteet[] = new Tayte(array('nimi' => $tayte->nimi, 'taytenro' => $tayte->taytenro));
-                        break;
-                    }
-                }
+                $pizzantaytteet[] = new Tayte(array('nimi' => $tulos['nimi'], 'taytenro' => $tulos['lisukenro']));
             }
             return $pizzantaytteet;
         }

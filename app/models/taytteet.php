@@ -23,7 +23,7 @@
         }
         
         public static function getpizzataytteet($pizzaid) {
-            $taytteet = all();
+            $taytteet = Taytteet::all();
             $query = DB::connection()->prepare('SELECT * FROM PizzaJaLisukkeet WHERE pizzanro = :pizzaid');
             $query->execute(array('pizzaid' => $pizzaid));
             $tulokset = $query->fetchAll();

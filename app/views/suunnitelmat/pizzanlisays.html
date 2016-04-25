@@ -10,7 +10,7 @@
         <label>Täytteet</label>
         <select class="form-control" name="taytteet[]" multiple="">
         {% for tayte in taytteet %}
-            <option value="{{tayte.lisukenro}}">{{tayte.nimi}}</option>
+            <option value="{{tayte.taytenro}}">{{tayte.nimi}}</option>
         {% endfor %}
         </select>
     </div>

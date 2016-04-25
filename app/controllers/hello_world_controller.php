@@ -37,13 +37,23 @@
         $params = $_POST;
         $pizza = new Pizza(array(
             'nimi' => $params['nimi'],
-            'pizzanro' => $params['pizzanro'],
             'hinta' => $params['hinta']
         ));
         
         $pizza->save();
         
-        Redirect::to('/pizza' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti'));
+        Redirect::to('/pizza/' . $pizza->pizzanro . '/lisaatayte', array('message' => 'Pizza on lisätty onnistuneesti'));
+    }
+    
+    public static function taytteenlisays($id){
+        $pizza = Pizza::find_by_pizzanro($id);
+        $taytteet = Taytteet::all();
+        View::make('suunnitelmat/taytteenlisays.html', array('pizza' => $pizza, 'taytteet' => $taytteet));
+    }
+    
+    public static function taytestore($id){
+        $params = $_POST;
+        
     }
     
   }

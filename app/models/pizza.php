@@ -59,5 +59,10 @@
             $query->execute(array('nimi' => $this->nimi, 'hinta' => $this-hinta, 'id' => $this->pizzanro));
         }
         
+        public static function taytesave($pizzanro, $lisukenro) {
+            $query = DB::connection()->prepare('INSERT INTO PizzaJaLisukkeet (pizzanro, lisukenro) VALUES (:pizzanro, :lisukenro)');
+            $query->execute(array('pizzanro' => $pizzanro, 'lisukenro' => $lisukenro));
+        }
+        
     }
 

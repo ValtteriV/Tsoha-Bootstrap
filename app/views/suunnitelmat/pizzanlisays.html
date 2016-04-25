@@ -4,18 +4,20 @@
 <form method="post" action="{{base_path}}/pizza">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" class="form-control" value="">
+        <input type="text" class="form-control" name="nimi" value="">
     </div>
-    
-    {% for tayte in taytteet %}
-    <div class="checkbox">
-        <label><input type="checkbox" value="{{tayte.lisukenro}}">{{tayte.nimi}}</label>
+    <div class="form-group">
+        <label>Täytteet</label>
+        <select class="form-control" name="taytteet[]" multiple="">
+        {% for tayte in taytteet %}
+            <option value="{{tayte.lisukenro}}">{{tayte.nimi}}</option>
+        {% endfor %}
+        </select>
     </div>
-    {% endfor %}
     
     <div class="form-group">
         <label>Hinta</label>
-        <input type="number" class="form-control" value="">
+        <input type="number" class="form-control" name="hinta" value="">
     </div>
 
     <div class="form-group">

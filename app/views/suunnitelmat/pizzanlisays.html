@@ -6,13 +6,11 @@
         <label>Nimi</label>
         <input type="text" class="form-control" value="">
     </div>
-    <select>
-        <optgroup label="Täytteet">
-            {% for tayte in taytelista %}
-            <option value=tayte.taytenro>tayte.nimi</option>
-            {% endfor %}
-        </optgroup>
-    </select>
+    
+    {% for tayte in taytteet %}
+    <div class="checkbox">
+        <label><input type="checkbox" value="{{tayte.lisukenro}}">{{tayte.nimi}}</label>
+    {% endfor %}
     
     <div class="form-group">
         <label>Hinta</label>

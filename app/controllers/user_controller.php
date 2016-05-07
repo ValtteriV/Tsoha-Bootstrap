@@ -1,5 +1,5 @@
 <?php
-
+require_once 'app/models/user.php';
 class UserController extends BaseController {
     
     public static function kirjautuminen() {

@@ -47,7 +47,7 @@ class TayteController extends BaseController{
         }
         $tayte = new Tayte(array('nimi' => $params['nimi']));
         $tayte->save();
-        Redirect::to('/tayte', array('user' => $user, 'message' => 'Täytettä muokattu onnistuneesti.'));
+        Redirect::to('/tayte', array('user' => $user, 'message' => 'Täyte lisätty onnistuneesti.'));
     }
 }
 /* 

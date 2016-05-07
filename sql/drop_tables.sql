@@ -1,4 +1,4 @@
 -- Lisää DROP TABLE lauseet tähän tiedostoon
-DROP TABLE IF EXISTS Kayttaja CASCADE;
+DROP TABLE IF EXISTS TarjousHinnat CASCADE;
 DROP TABLE IF EXISTS Tilaus CASCADE;
 DROP TABLE IF EXISTS TilauksenPizzat CASCADE;

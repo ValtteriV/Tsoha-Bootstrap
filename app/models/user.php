@@ -22,6 +22,26 @@ class User extends BaseModel {
             return null;
         }
     }
+    
+    public static function find($id) {
+        $query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE kayttajaTunnus = :id LIMIT 1');
+        $query->execute(array('id' => $id));
+        $match = $query->fetch();
+        
+        if($match) {
+            $user = new User(array(
+                'kayttajaid' => $match['kayttajaid'],
+                'nimi' => $match['nimi'],
+                'osoite' => $match['osoite'],
+                'puhelinnro' => $match['puhelinnro'],
+                'kayttajatunnus' => $match['kayttajatunnus'],
+                'salasana' => $match['salasana']
+            ));
+            return $user;
+        } else {
+            return null;
+        }
+    }
 }
 
 /* 

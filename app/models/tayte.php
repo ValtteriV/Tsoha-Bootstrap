@@ -10,7 +10,7 @@
         public static function all() {
             $query = DB::connection()->prepare('SELECT * FROM Lisuke');
             $query->execute();
-            $results = $query->fetch();
+            $results = $query->fetchAll();
             $lisukkeet = array();
             foreach($results as $result) {
                 $lisukkeet[] = new Tayte(array(

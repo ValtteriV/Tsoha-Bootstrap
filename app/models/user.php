@@ -5,7 +5,7 @@ class User extends BaseModel {
     
     public static function authenticate($kayttajatunnus, $salasana) {
         $query = DB::connection()->prepare('SELECT * FROM Kayttajat WHERE kayttajaTunnus = :kayttajatunnus AND salasana = :salasana LIMIT 1');
-        $query->execute(array('kayttajaTunnus' => $kayttajatunnus, 'salasana' => $salasana));
+        $query->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
         $match = $query->fetch();
         
         if($match) {

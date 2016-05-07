@@ -42,7 +42,7 @@ class TayteController extends BaseController{
     public static function lisaatayte() {
         $params = $_POST;
         $user = self::get_user_logged_in();
-        if (!user) {
+        if (!$user) {
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi täytteitä.'));
         }
         $tayte = new Tayte(array('nimi' => $params[nimi]));

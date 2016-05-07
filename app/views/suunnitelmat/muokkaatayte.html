@@ -1,6 +1,6 @@
 {% extends "base.html %}
 {% block content %}
-<form method="POST" action="{{base_path}}/tayte/{{tayte.taytenro}}/muokkaa">
+<form method="post" action="{{base_path}}/tayte/{{tayte.taytenro}}/muokkaa">
     <div class="form-group">
         <label>Nimi</label>
         <input type="text" class="form-control" name="nimi" value="{{tayte.nimi}}">

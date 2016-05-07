@@ -16,7 +16,7 @@
         <tr>
             <td>{{tayte.nimi}}</td>
             {% if user is not null %}
-            <td><form action="{{base_path}}/tayte/{{tayte.taytenro}}/delete" method="POST" class="btn btn-danger">Poista</form></td>
+            <td><form action="{{base_path}}/tayte/{{tayte.taytenro}}/delete" method="post" class="btn btn-danger">Poista</form></td>
             <td><a href="{{base_path}}/tayte/{{tayte.taytenro}}/muokkaa">Muokkaa</a></td>
             {% endif %}
         </tr>

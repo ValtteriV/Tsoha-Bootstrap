@@ -16,7 +16,7 @@
     public static function etusivu(){
         $user = self::get_user_logged_in();
         $pizzat = Pizza::all();
-        View::make('suunnitelmat/etusivu.html', array('pizzat' => $pizzat, 'user' => $user_logged_in));
+        View::make('suunnitelmat/etusivu.html', array('pizzat' => $pizzat, 'user' => $user));
     }
     
     public static function pizza(){
@@ -27,7 +27,7 @@
         $user = self::get_user_logged_in();
         $pizzantaytteet = Taytteet::getpizzataytteet($id);
         $pizza = Pizza::find_by_pizzanro($id);
-        View::make('suunnitelmat/pizzamallilla.html', array('pizza' => $pizza, 'taytteet' => $pizzantaytteet, 'user' => $user_logged_in));
+        View::make('suunnitelmat/pizzamallilla.html', array('pizza' => $pizza, 'taytteet' => $pizzantaytteet, 'user' => $user));
     }
     
     public static function pizzanlisays(){

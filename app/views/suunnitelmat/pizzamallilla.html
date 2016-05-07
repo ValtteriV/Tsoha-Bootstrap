@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>{{pizza.nimi}}</h1>
-  {% if user_logged_in %}
+  {% if user_logged_in is defined %}
     <a href="{{base_path}}/pizza/{{pizza.pizzanro}}/lisaatayte" class="btn btn-success">Lisää pizzaan täytteitä</a>
     <a href="{{base_path}}/pizza/{{pizza.pizzanro}}/poistatayte" class="btn btn-danger">Poista pizzasta täytteitä</a>
     <form method ="post" action="{{base_path}}/pizza/{{pizza.pizzanro}}/destroy">

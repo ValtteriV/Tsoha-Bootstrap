@@ -4,8 +4,10 @@
     <thead>
         <tr>
             <th>Tayte</th>
+            {% if user is not null %}
             <th>Poista</th>
             <th>Muokkaa</th>
+            {% endif %}
         </tr>
     </thead>
     
@@ -13,8 +15,10 @@
         {% for tayte in taytteet %}
         <tr>
             <td>{{tayte.nimi}}</td>
+            {% if user is not null %}
             <td><form action="{{base_path}}/tayte/{{tayte.taytenro}}/delete" method="POST" class="btn btn-danger">Poista</form></td>
             <td><a href="{{base_path}}/tayte/{{tayte.taytenro}}/muokkaa">Muokkaa</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

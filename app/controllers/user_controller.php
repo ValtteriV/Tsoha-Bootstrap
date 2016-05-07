@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends baseController {
+class UserController extends BaseController {
     
     public static function kirjautuminen() {
         View::make('suunnitelmat/login.html');

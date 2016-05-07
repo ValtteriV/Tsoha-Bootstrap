@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Pizza-Paten Pizzapalvelu</h1>
-{% if user_logged_in is defined %}
+{% if user is defined %}
 <a href="{{base_path}}/pizzanlisays" class="btn btn-success">Lisää uusi pizza</a>
 {% endif %}
 

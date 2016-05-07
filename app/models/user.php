@@ -17,6 +17,7 @@ class User extends BaseModel {
                 'kayttajatunnus' => $match['kayttajatunnus'],
                 'salasana' => $match['salasana']
             ));
+            $_SESSION['user'] = $user->kayttajaid;
             return $user;
         } else {
             return null;

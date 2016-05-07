@@ -1,51 +1,51 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::etusivu();
+    PizzaController::etusivu();
   });
 
   $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    PizzaController::sandbox();
   });
   
   $routes->get('/etusivu', function() {
-      HelloWorldController::etusivu();
+      PizzaController::etusivu();
   });
   
   $routes->get('/pizza/:id', function($id) {
-      HelloWorldController::tiettypizza($id);
+      PizzaController::tiettypizza($id);
   });
   
   $routes->post('/pizza/:id', function($id) {
-      HelloWorldController::taytestore($id);
+      PizzaController::taytestore($id);
   });
   
   $routes->post('/pizza/:id/destroy', function($id) {
-      HelloWorldController::destroy($id);
+      PizzaController::destroy($id);
   });
   
   $routes->post('/pizza', function() {
-      HelloWorldController::store();
+      PizzaController::store();
   });
 
   $routes->get('/pizzanlisays', function() {
-      HelloWorldController::pizzanlisays();
+      PizzaController::pizzanlisays();
   });
   
   $routes->get('/pizza/:id/lisaatayte', function($id) {
-      HelloWorldController::taytteenlisaysnakyma($id);
+      PizzaController::taytteenlisaysnakyma($id);
   });
   
   $routes->post('/pizza/:id/lisaatayte', function($id) {
-      HelloWorldController::taytteenlisays($id);
+      PizzaController::taytteenlisays($id);
   });
   
   $routes->get('/pizza/:id/poistatayte', function($id) {
-      HelloWorldController::taytteenpoistonakyma($id);
+      PizzaController::taytteenpoistonakyma($id);
   });
   
   $routes->post('/pizza/:id/poistatayte', function($id) {
-      HelloWorldController::taytteenpoisto($id);
+      PizzaController::taytteenpoisto($id);
   });
   
   $routes->get('/login', function() {
@@ -58,4 +58,24 @@
   
   $routes->post('/logout', function() {
       UserController::logout();
+  });
+  
+  $routes->get('/tayte', function() {
+      TayteController::listaus();
+  });
+  
+  $routes->post('/pizza/:id/muokkaa', function($id) {
+      PizzaController::pizzanimentaihinnanmuokkaus($id);
+  });
+  
+  $routes->post('/tayte/:id/delete', function($id) {
+      TayteController::delete($id);
+  });
+  
+  $routes->get('/tayte/:id/muokkaa', function($id) {
+      TayteController::muokkausnakyma($id);
+  });
+  
+  $routes->post('/tayte/:id/muokkaa', function($id) {
+      TayteController::muokkaa($id);
   });

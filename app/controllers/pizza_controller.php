@@ -1,7 +1,7 @@
 <?php
   require_once 'app/models/pizza.php';
   require_once 'app/models/taytteet.php';
-  class HelloWorldController extends BaseController{
+  class PizzaController extends BaseController{
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
@@ -36,7 +36,7 @@
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzoja.'));
         }
         $taytelista = Taytteet::all();
-      View::make('suunnitelmat/pizzanlisays.html', array('taytteet' => $taytelista));
+      View::make('suunnitelmat/pizzanlisays.html', array('taytteet' => $taytelista, 'user' => $user));
     }
     
     
@@ -56,7 +56,7 @@
             Pizza::taytesave($pizza->pizzanro, $tayte);
         }
         
-        Redirect::to('/pizza/' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti.'));
+        Redirect::to('/pizza/' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti.', 'user' => $user));
     }
     
     public static function taytteenlisaysnakyma($id){
@@ -66,7 +66,7 @@
         }
         $pizza = Pizza::find_by_pizzanro($id);
         $taytteet = Taytteet::all();
-        View::make('suunnitelmat/taytteenlisays.html', array('pizza' => $pizza, 'taytteet' => $taytteet));
+        View::make('suunnitelmat/taytteenlisays.html', array('pizza' => $pizza, 'taytteet' => $taytteet, 'user' => $user));
     }
     
     public static function destroy($id) {
@@ -76,7 +76,7 @@
         }
         $pizza = new Pizza(array('pizzanro' => $id));
         $pizza->destroy();
-        Redirect::to('/etusivu', array('message' => 'Pizza on poistettu onnistuneesti.'));
+        Redirect::to('/etusivu', array('message' => 'Pizza on poistettu onnistuneesti.', 'user' => $user));
     }
     
     public static function taytteenlisays($id) {
@@ -88,7 +88,7 @@
         foreach($params['taytteet'] as $tayte) {
             Pizza::taytesave($id, $tayte);
         }
-        Redirect::to('/pizza/' . $id, array('message' => 'Täytteet lisätty onnistuneesti.'));
+        Redirect::to('/pizza/' . $id, array('message' => 'Täytteet lisätty onnistuneesti.', 'user' => $user));
     }
     
     public static function taytteenpoistonakyma($id){
@@ -98,7 +98,7 @@
         }
         $taytteet = Taytteet::getpizzataytteet($id);
         $pizza = Pizza::find_by_pizzanro($id);
-        View::make('suunnitelmat/taytteenpoisto.html', array('pizza' => $pizza, 'taytteet' => $taytteet));
+        View::make('suunnitelmat/taytteenpoisto.html', array('pizza' => $pizza, 'taytteet' => $taytteet, 'user' => $user));
     }
     
     public static function taytteenpoisto($id){
@@ -110,7 +110,18 @@
         foreach($params['taytteet'] as $tayte) {
             Pizza::taytedelete($id, $tayte);
         }
-        Redirect::to('/pizza/' . $id, array('message' => 'Taytteet poistettu onnistuneesti.'));
+        Redirect::to('/pizza/' . $id, array('message' => 'Taytteet poistettu onnistuneesti.', 'user' => $user));
+    }
+    
+    public static function pizzanimentaihinnanmuokkaus($id) {
+        $params = $_POST;
+        $user = self::get_user_logged_in();
+        if (!$user) {
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut muokataksesi pizzan nimeä tai hintaa.'));
+        }
+        $pizza = new Pizza(array('nimi' => $params['nimi'], 'hinta' => $params['hinta']));
+        $pizza->update();
+        Redirect::to('/pizza/' . $pizza->pizzanro, array('user' => $user, 'pizza' => $pizza, 'message' => 'Pizzan nimi tai hinta muokattu onnistuneesti.'));
     }
     
   }

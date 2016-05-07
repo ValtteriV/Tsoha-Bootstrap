@@ -25,5 +25,21 @@
         {% endfor %}
     </tbody>
 </table>
+  
+  {% if user is not null %}
+  <form method="post" action="{{base_path}}/pizza/{{pizza.pizzanro}}/muokkaa">
+      <div class="form-group">
+        <label>Muokkaa nimeä</label>
+        <input type="text" class="form-control" name="nimi" value="{{pizza.nimi}}">
+      </div>
+      <div class="form-group">
+          <label>Muokkaa hintaa</label>
+          <input type="number" class="form-control" name="hinta" value="{{pizza.hinta}}"
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Muokkaa</button>
+      </div>
+  </form>
+  {% endif %}
   <!-- Kuvaus tulee tähän -->
 {% endblock %}

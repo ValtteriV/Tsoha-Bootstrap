@@ -16,7 +16,7 @@ class UserController extends BaseController {
         } else {
             $_SESSION['user'] = $user->kayttajaid;
             
-            Redirect::to('/', array('message' => 'Kirjautuminen onnistui'));
+            Redirect::to('/', array('message' => 'Kirjautuminen onnistui ' . $_SESSION['user']));
         }
     }
 }

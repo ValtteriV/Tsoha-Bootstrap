@@ -22,6 +22,11 @@ class UserController extends BaseController {
             Redirect::to('/', array('message' => 'Kirjautuminen onnistui'));
         }
     }
+    
+    public static function logout(){
+        $_SESSION['user'] = null;
+        Redirect::to('/login', array('message' => 'Olet kirjautunut ulos'));
+    }
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.

@@ -55,3 +55,7 @@
   $routes->post('/login', function() {
       UserController::kirjautumisenkasittely();
   });
+  
+  $routes->post('/logout', function() {
+      UserController::logout();
+  });

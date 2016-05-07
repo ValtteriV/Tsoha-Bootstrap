@@ -33,7 +33,7 @@
     public static function pizzanlisays(){
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzoja.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzoja.'));
         }
         $taytelista = Taytteet::all();
       View::make('suunnitelmat/pizzanlisays.html', array('taytteet' => $taytelista));
@@ -43,7 +43,7 @@
     public static function store(){
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzoja.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzoja.'));
         }
         $params = $_POST;
         $pizza = new Pizza(array(
@@ -62,7 +62,7 @@
     public static function taytteenlisaysnakyma($id){
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzaan täytteitä.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzaan täytteitä.'));
         }
         $pizza = Pizza::find_by_pizzanro($id);
         $taytteet = Taytteet::all();
@@ -72,7 +72,7 @@
     public static function destroy($id) {
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzoja.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzoja.'));
         }
         $pizza = new Pizza(array('pizzanro' => $id));
         $pizza->destroy();
@@ -82,7 +82,7 @@
     public static function taytteenlisays($id) {
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzaan täytteitä.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzaan täytteitä.'));
         }
         $params = $_POST;
         foreach($params['taytteet'] as $tayte) {
@@ -94,7 +94,7 @@
     public static function taytteenpoistonakyma($id){
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzan täytteitä.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzan täytteitä.'));
         }
         $taytteet = Taytteet::getpizzataytteet($id);
         $pizza = Pizza::find_by_pizzanro($id);
@@ -104,7 +104,7 @@
     public static function taytteenpoisto($id){
         $user = self::get_user_logged_in();
         if(!$user) {
-            Redirect::to('suunnitelmat/login.html', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzan täytteitä.'));
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzan täytteitä.'));
         }
         $params = $_POST;
         foreach($params['taytteet'] as $tayte) {

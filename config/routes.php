@@ -56,6 +56,6 @@
       UserController::kirjautumisenkasittely();
   });
   
-  $routes->post('/logout', function() {
+  $routes->get('/logout', function() {
       UserController::logout();
   });

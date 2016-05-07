@@ -66,5 +66,10 @@
             $query->execute(array('pizzanro' => $pizzanro, 'lisukenro' => $lisukenro));
         }
         
+        public static function taytedelete($pizzanro, $lisukenro) {
+            $query = DB::connection()->prepare('DELETE FROM PizzaJaLisukkeet WHERE pizzanro = :pizzanro AND lisukenro = :lisukenro');
+            $query->execute(array('pizzanro' => $pizzanro, 'lisukenro' => $lisukenro));
+        }
+        
     }
 

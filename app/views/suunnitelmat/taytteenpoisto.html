@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>{{pizza.nimi}}</h1>
-<form method="post" action="{{base_path}}/pizza/{{pizza.pizzanro}}/lisaatayte">
+<form method="post" action="{{base_path}}/pizza/{{pizza.pizzanro}}/poistatayte">
     <div class="form-group">
-        <label>Valitse lisättävät täytteet</label>
+        <label>Valitse poistettavat täytteet</label>
         <select class="form-control" name="taytteet[]" multiple="">
         {% for tayte in taytteet %}
             <option value="{{tayte.taytenro}}">{{tayte.nimi}}</option>
@@ -14,4 +14,5 @@
         <button type="submit" class="btn btn-primary">Lisää täytteet</button>
     </div>
 </form>
+
 {% endblock %}

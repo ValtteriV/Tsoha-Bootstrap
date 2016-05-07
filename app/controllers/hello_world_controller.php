@@ -49,7 +49,7 @@
         Redirect::to('/pizza/' . $pizza->pizzanro, array('message' => 'Pizza on lisätty onnistuneesti.'));
     }
     
-    public static function taytteenlisays($id){
+    public static function taytteenlisaysnakyma($id){
         $pizza = Pizza::find_by_pizzanro($id);
         $taytteet = Taytteet::all();
         View::make('suunnitelmat/taytteenlisays.html', array('pizza' => $pizza, 'taytteet' => $taytteet));
@@ -59,6 +59,28 @@
         $pizza = new Pizza(array('pizzanro' => $id));
         $pizza->destroy();
         Redirect::to('/etusivu', array('message' => 'Pizza on poistettu onnistuneesti.'));
+    }
+    
+    public static function taytteenlisays($id) {
+        $params = $_POST;
+        foreach($params['taytteet'] as $tayte) {
+            Pizza::taytesave($id, $tayte);
+        }
+        Redirect::to('/pizza/' . $id, array('message' => 'Täytteet lisätty onnistuneesti.'));
+    }
+    
+    public static function taytteenpoistonakyma($id){
+        $taytteet = Taytteet::getpizzataytteet($id);
+        $pizza = Pizza::find_by_pizzanro($id);
+        View::make('suunnitelmat/taytteenpoisto.html', array('pizza' => $pizza, 'taytteet' => $taytteet));
+    }
+    
+    public static function taytteenpoisto($id){
+        $params = $_POST;
+        foreach($params['taytteet'] as $tayte) {
+            Pizza::taytedelete($id, $tayte);
+        }
+        Redirect::to('/pizza/' . $id, array('message' => 'Taytteet lisätty onnistuneesti.'));
     }
     
   }

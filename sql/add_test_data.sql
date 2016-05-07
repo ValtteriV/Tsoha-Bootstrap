@@ -44,7 +44,3 @@ INSERT INTO PizzaJaLisukkeet (pizzanro, lisukenro) VALUES ('1', '1');
 
 INSERT INTO Kayttaja (nimi, osoite, puhelinNro, kayttajaTunnus, salasana) VALUES ('Matti Meikäläinen', 'Valeosoite 6', '+358400500400', 'Matti666', 'qwerty');
 INSERT INTO Kayttaja (nimi, osoite, puhelinNro, kayttajaTunnus, salasana) VALUES ('Pate Paksukainen', 'Valeosoite 5 C 62', '+358400555400', 'PatTheMat', 'salasana');
-
-INSERT INTO Tilaus (tilausAika, tilauksenTila) VALUES (Now(), '0');
-INSERT INTO Tilaus (tilausAika, tilauksenTila) VALUES (Now(), '1');
-INSERT INTO Tilaus (tilausAika, tilauksenTila) VALUES (Now(), '2');

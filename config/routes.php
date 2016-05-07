@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    HelloWorldController::etusivu();
   });
 
   $routes->get('/hiekkalaatikko', function() {
@@ -33,5 +33,25 @@
   });
   
   $routes->get('/pizza/:id/lisaatayte', function($id) {
+      HelloWorldController::taytteenlisaysnakyma($id);
+  });
+  
+  $routes->post('/pizza/:id/lisaatayte', function($id) {
       HelloWorldController::taytteenlisays($id);
+  });
+  
+  $routes->get('/pizza/:id/poistatayte', function($id) {
+      HelloWorldController::taytteenpoistonakyma($id);
+  });
+  
+  $routes->post('/pizza/:id/poistatayte', function($id) {
+      HelloWorldController::taytteenpoisto($id);
+  });
+  
+  $routes->get('/login', function($id) {
+      UserController::kirjautuminen();
+  }); 
+  
+  $routes->post('/login', function() {
+      UserController::kirjautumisenkasittely();
   });

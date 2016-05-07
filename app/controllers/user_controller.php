@@ -4,7 +4,7 @@ class UserController extends BaseController {
     
     public static function kirjautuminen() {
         if (self::get_user_logged_in()) {
-            View::make('suunnitelmat/etusivu.html', array('error' => 'Olet jo kirjautunut sisään.'));
+            Redirect::to('/', array('error' => 'Olet jo kirjautunut sisään.'));
         }
         View::make('suunnitelmat/login.html');
     }

@@ -48,7 +48,7 @@
       HelloWorldController::taytteenpoisto($id);
   });
   
-  $routes->get('/login', function($id) {
+  $routes->get('/login', function() {
       UserController::kirjautuminen();
   }); 
   

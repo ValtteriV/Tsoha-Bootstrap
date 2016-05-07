@@ -13,8 +13,8 @@ class User extends BaseModel {
                 'kayttajaid' => $match['kayttajaid'],
                 'nimi' => $match['nimi'],
                 'osoite' => $match['osoite'],
-                'puhelinnro' => $match['puhelinNro'],
-                'kayttajatunnus' => $match['kayttajaTunnus'],
+                'puhelinnro' => $match['puhelinnro'],
+                'kayttajatunnus' => $match['kayttajatunnus'],
                 'salasana' => $match['salasana']
             ));
             return $user;

@@ -10,7 +10,7 @@ class User extends BaseModel {
         
         if($match) {
             $user = new User(array(
-                'kayttajaid' => $match['kayttajaId'],
+                'kayttajaid' => $match['kayttajaid'],
                 'nimi' => $match['nimi'],
                 'osoite' => $match['osoite'],
                 'puhelinnro' => $match['puhelinNro'],

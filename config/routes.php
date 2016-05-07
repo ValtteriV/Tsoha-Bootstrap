@@ -79,3 +79,7 @@
   $routes->post('/tayte/:id/muokkaa', function($id) {
       TayteController::muokkaa($id);
   });
+  
+  $routes->post('/tayte', function() {
+      TayteController::lisaatayte();
+  });

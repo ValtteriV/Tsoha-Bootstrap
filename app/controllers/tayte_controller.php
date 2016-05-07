@@ -38,6 +38,17 @@ class TayteController extends BaseController{
         $tayte->update();
         Redirect::to('/tayte', array('user' => $user, 'message' => 'Täytettä muokattu onnistuneesti.'));
     }
+    
+    public static function lisaatayte() {
+        $params = $_POST;
+        $user = self::get_user_logged_in();
+        if (!user) {
+            Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi täytteitä.'));
+        }
+        $tayte = new Tayte(array('nimi' => $params[nimi]));
+        $tayte->save();
+        Redirect::to('/tayte', array('user' => $user, 'message' => 'Täytettä muokattu onnistuneesti.'));
+    }
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.

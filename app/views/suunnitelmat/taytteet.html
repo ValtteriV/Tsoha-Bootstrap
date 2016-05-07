@@ -23,4 +23,16 @@
         {% endfor %}
     </tbody>
 </table>
+
+{% if user is not null %}
+<h1>Lisää uusi täyte</h1>
+<form method="post" action="{{base_path}}/tayte">
+    <div class="form-group">
+        <input type="text" name="nimi" class="form-control">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Lisää täyte</button>
+    </div>
+</form>
+{% endif %}
 {% endblock %}

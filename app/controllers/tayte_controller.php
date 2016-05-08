@@ -46,7 +46,7 @@ class TayteController extends BaseController{
         }
         $tayte = new Tayte(array('nimi' => $params['nimi'], 'taytenro' => $id));
         $errors = $tayte->validate_nimi();
-        if (count($errors > 0)) {
+        if (count($errors) > 0) {
             Redirect::to('/tayte', array('errors' => $errors, 'user' => $user));
         }
         $tayte->update();

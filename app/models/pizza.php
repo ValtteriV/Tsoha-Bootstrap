@@ -4,10 +4,11 @@
 
     class Pizza extends BaseModel {
         
-        public $pizzanro, $nimi, $hinta;
+        public $pizzanro, $nimi, $hinta, $validators;
         
         public function __construct($attributes) {
             parent::__construct($attributes);
+            $this->validators = array('validate_nimi', 'validate_hinta');
         }
         
         public static function all(){
@@ -69,6 +70,36 @@
         public static function taytedelete($pizzanro, $lisukenro) {
             $query = DB::connection()->prepare('DELETE FROM PizzaJaLisukkeet WHERE pizzanro = :pizzanro AND lisukenro = :lisukenro');
             $query->execute(array('pizzanro' => $pizzanro, 'lisukenro' => $lisukenro));
+        }
+        
+        public function validate_nimi() {
+            $errors = array();
+            if ($this->nimi == '' || $this->name == null) {
+                $errors[] = 'Nimi ei saa olla tyhjä.';
+            }
+            if (strlen($this->nimi) < 3 || strlen($this->nimi) > 20) {
+                $errors[] = 'Nimen tulee olla 3-20 merkkiä pitkä.';
+            }
+            return $errors;
+        }
+        
+        public function validate_hinta() {
+            $errors = array();
+            if (!is_numeric($this->hinta)) {
+                $errors[] = 'Hinnan tulee olla numero.';
+            } else if ($this->hinta < 0 || $this->hinta == null) {
+                $errors[] = 'Hinnan tulee olla suurempi kuin 0.';
+            } 
+            return $errors;
+        }
+        
+        public function errors() {
+            $errors = array();
+            foreach ($this->validators as $validator) {
+                $validate_errors = $this->{$validator}();
+                $errors = array_merge($errors, $validate_errors);
+            }
+            return $errors;
         }
         
     }

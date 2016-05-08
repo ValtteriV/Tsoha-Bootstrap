@@ -35,6 +35,10 @@ class TayteController extends BaseController{
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut muokataksesi täytteitä.'));
         }
         $tayte = new Tayte(array('nimi' => $params['nimi'], 'taytenro' => $id));
+        $errors = $tayte->validate_nimi();
+        if (count($errors > 0)) {
+            Redirect::to('/tayte', array('errors' => $errors, 'user' => $user));
+        }
         $tayte->update();
         Redirect::to('/tayte', array('user' => $user, 'message' => 'Täytettä muokattu onnistuneesti.'));
     }
@@ -46,6 +50,10 @@ class TayteController extends BaseController{
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi täytteitä.'));
         }
         $tayte = new Tayte(array('nimi' => $params['nimi']));
+        $errors = $tayte->validate_nimi();
+        if (count($errors > 0)) {
+            Redirect::to('/tayte', array('errors' => $errors, 'user' => $user));
+        }
         $tayte->save();
         Redirect::to('/tayte', array('user' => $user, 'message' => 'Täyte lisätty onnistuneesti.'));
     }

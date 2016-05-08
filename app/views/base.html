@@ -69,6 +69,13 @@
             {{error}}
         </div>
         {% endif %}
+        {% if errors is defined %}
+        {% for vaidation_error in errors %}
+        <div class="alert-danger">
+            {{validation_error}}
+        </div>
+        {% endfor %}
+        {% endif %}
       <!-- Dynaaminen sisältö tulee tähän -->
       {% block content %}{% endblock %}
     </div>

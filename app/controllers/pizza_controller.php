@@ -50,7 +50,10 @@
             'nimi' => $params['nimi'],
             'hinta' => $params['hinta']
         ));
-        
+        $errors = $pizza->errors();
+        if (count($errors) > 0) {
+            Redirect::to('/pizzanlisays', array('errors' => $errors, 'user' => $user));
+        }
         $pizza->save();
         foreach($params['taytteet'] as $tayte) {
             Pizza::taytesave($pizza->pizzanro, $tayte);
@@ -120,6 +123,10 @@
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut muokataksesi pizzan nimeä tai hintaa.'));
         }
         $pizza = new Pizza(array('nimi' => $params['nimi'], 'hinta' => $params['hinta']));
+        $errors = $pizza->errors();
+        if (count($errors) > 0) {
+            Redirect::to('/pizza/' . $id, array('errors' => $errors, 'user' => $user));
+        }
         $pizza->update();
         Redirect::to('/pizza/' . $pizza->pizzanro, array('user' => $user, 'pizza' => $pizza, 'message' => 'Pizzan nimi tai hinta muokattu onnistuneesti.'));
     }

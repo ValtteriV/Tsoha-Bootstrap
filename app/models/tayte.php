@@ -51,6 +51,17 @@
             $query = DB:: connection()->prepare('UPDATE Lisuke SET nimi = :nimi WHERE lisukenro = :id');
             $query->execute(array('nimi' => $this->nimi, 'id' => $this->taytenro));
         }
+        
+        public function validate_nimi() {
+            $errors = array();
+            if ($this->nimi == '' || $this->name == null) {
+                $errors[] = 'Nimi ei saa olla tyhjä.';
+            }
+            if (strlen($this->nimi) < 3 || strlen($this->nimi) > 20) {
+                $errors[] = 'Nimen tulee olla 3-20 merkkiä pitkä.';
+            }
+            return $errors;
+        }
     }
 /* 
  * To change this license header, choose License Headers in Project Properties.

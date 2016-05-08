@@ -153,7 +153,7 @@
             Redirect::to('/pizza/' . $id, array('errors' => $errors, 'user' => $user));
         }
         $pizza->update();
-        Redirect::to('/pizza/' . $id, array('user' => $user, 'pizza' => $pizza, 'message' => 'Pizzan nimi tai hinta muokattu onnistuneesti.'));
+        Redirect::to('/pizza/' . $pizza->pizzanro, array('user' => $user, 'pizza' => $pizza, 'message' => 'Pizzan nimi tai hinta muokattu onnistuneesti.'));
     }
     
   }

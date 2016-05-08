@@ -147,13 +147,13 @@
         if (!$pizza) {
             Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
         }
-        $pizza = new Pizza(array('nimi' => $params['nimi'], 'hinta' => $params['hinta']));
+        $pizza = new Pizza(array('nimi' => $params['nimi'], 'hinta' => $params['hinta'], 'pizzanro' => $id));
         $errors = $pizza->errors();
         if (count($errors) > 0) {
             Redirect::to('/pizza/' . $id, array('errors' => $errors, 'user' => $user));
         }
         $pizza->update();
-        Redirect::to('/pizza/' . $id, array('user' => $user, 'message' => 'Pizzan nimi tai hinta muokattu onnistuneesti.'));
+        Redirect::to('/pizza/' . $pizza->pizzanro, array('user' => $user, 'pizza' => $pizza, 'message' => 'Pizzan nimi tai hinta muokattu onnistuneesti.'));
     }
     
   }

@@ -54,7 +54,7 @@
         
         public function validate_nimi() {
             $errors = array();
-            if ($this->nimi == '' || $this->name == null) {
+            if ($this->nimi == '' || $this->nimi == null) {
                 $errors[] = 'Nimi ei saa olla tyhjä.';
             }
             if (strlen($this->nimi) < 3 || strlen($this->nimi) > 20) {

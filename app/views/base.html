@@ -69,7 +69,7 @@
             {{error}}
         </div>
         {% endif %}
-        {% if errors is defined %}
+        {% if errors %}
         {% for vaidation_error in errors %}
         <div class="alert-danger">
             {{validation_error}}

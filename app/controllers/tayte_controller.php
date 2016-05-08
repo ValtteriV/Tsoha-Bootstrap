@@ -15,6 +15,9 @@ class TayteController extends BaseController{
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi täytteitä.'));
         }
         $tayte = Tayte::find($id);
+        if (!$tayte) {
+            Redirect::to('/tayte', array('user' => $user, 'error' => 'Virheellinen lisukenro'));
+        }
         $tayte->destroy();
         Redirect::to('/tayte', array('user' => $user, 'message' => 'Täyte poistettu onnistuneesti.'));
     }
@@ -25,6 +28,9 @@ class TayteController extends BaseController{
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut muokataksesi täytteitä.'));
         }
         $tayte = Tayte::find($id);
+        if (!$tayte) {
+            Redirect::to('/tayte', array('user' => $user, 'error' => 'Virheellinen lisukenro'));
+        }
         View::make('suunnitelmat/muokkaatayte.html', array('user' => $user, 'tayte' => $tayte));
     }
     
@@ -33,6 +39,10 @@ class TayteController extends BaseController{
         $user = self::get_user_logged_in();
         if (!$user) {
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut muokataksesi täytteitä.'));
+        }
+        $tayte = Tayte::find($id);
+        if (!$tayte) {
+            Redirect::to('/tayte', array('user' => $user, 'error' => 'Virheellinen lisukenro'));
         }
         $tayte = new Tayte(array('nimi' => $params['nimi'], 'taytenro' => $id));
         $errors = $tayte->validate_nimi();

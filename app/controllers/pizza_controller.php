@@ -27,6 +27,9 @@
         $user = self::get_user_logged_in();
         $pizzantaytteet = Taytteet::getpizzataytteet($id);
         $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
+        }
         View::make('suunnitelmat/pizzamallilla.html', array('pizza' => $pizza, 'taytteet' => $pizzantaytteet, 'user' => $user));
     }
     
@@ -68,6 +71,9 @@
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzaan täytteitä.'));
         }
         $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
+        }
         $taytteet = Taytteet::all();
         View::make('suunnitelmat/taytteenlisays.html', array('pizza' => $pizza, 'taytteet' => $taytteet, 'user' => $user));
     }
@@ -76,6 +82,10 @@
         $user = self::get_user_logged_in();
         if(!$user) {
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzoja.'));
+        }
+        $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
         }
         $pizza = new Pizza(array('pizzanro' => $id));
         $pizza->destroy();
@@ -86,6 +96,10 @@
         $user = self::get_user_logged_in();
         if(!$user) {
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut lisätäksesi pizzaan täytteitä.'));
+        }
+        $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
         }
         $params = $_POST;
         foreach($params['taytteet'] as $tayte) {
@@ -101,6 +115,9 @@
         }
         $taytteet = Taytteet::getpizzataytteet($id);
         $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
+        }
         View::make('suunnitelmat/taytteenpoisto.html', array('pizza' => $pizza, 'taytteet' => $taytteet, 'user' => $user));
     }
     
@@ -108,6 +125,10 @@
         $user = self::get_user_logged_in();
         if(!$user) {
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut poistaaksesi pizzan täytteitä.'));
+        }
+        $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
         }
         $params = $_POST;
         foreach($params['taytteet'] as $tayte) {
@@ -121,6 +142,10 @@
         $user = self::get_user_logged_in();
         if (!$user) {
             Redirect::to('/login', array('error' => 'Sinun täytyy olla kirjautunut muokataksesi pizzan nimeä tai hintaa.'));
+        }
+        $pizza = Pizza::find_by_pizzanro($id);
+        if (!$pizza) {
+            Redirect::to('/', array('error' => 'Virheellinen pizzanro', 'user' => $user));
         }
         $pizza = new Pizza(array('nimi' => $params['nimi'], 'hinta' => $params['hinta']));
         $errors = $pizza->errors();

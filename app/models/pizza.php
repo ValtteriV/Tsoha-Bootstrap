@@ -59,7 +59,7 @@
         
         public function update() {
             $query = DB::connection()->prepare('UPDATE Pizza SET nimi = :nimi, hinta = :hinta WHERE pizzanro = :id');
-            $query->execute(array('nimi' => $this->nimi, 'hinta' => $this-hinta, 'id' => $this->pizzanro));
+            $query->execute(array('nimi' => $this->nimi, 'hinta' => $this->hinta, 'id' => $this->pizzanro));
         }
         
         public static function taytesave($pizzanro, $lisukenro) {
